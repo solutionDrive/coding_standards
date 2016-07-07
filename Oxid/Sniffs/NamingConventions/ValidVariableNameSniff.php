@@ -152,7 +152,7 @@ class Oxid_Sniffs_NamingConventions_ValidVariableNameSniff extends Zend_Sniffs_N
         if (preg_match_all('|[^\\\]\$([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)|', $tokens[$stackPtr]['content'], $matches) !== 0) {
             foreach ($matches[1] as $varName) {
                 // If it's a php reserved var, then its ok.
-                if (in_array($varName, $this->ignoreVaribaleNames) === true) {
+                if (in_array($varName, $this->_ignoreVaribaleNames) === true) {
                     continue;
                 }
 
@@ -188,7 +188,7 @@ class Oxid_Sniffs_NamingConventions_ValidVariableNameSniff extends Zend_Sniffs_N
         $varName = $tokens[$stackPtr+2]['content'];
 
         // If it's a reserved var, then its ok.
-        if (in_array($varName, $this->ignoreVaribaleNames) === true) {
+        if (in_array($varName, $this->_ignoreVaribaleNames) === true) {
             return;
         }
         //is Function
